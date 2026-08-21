@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="宋佳丽的个人面试介绍网站，展示教育经历、数据分析、商业分析与 AI 项目经历。">
+  <title>宋佳丽｜个人面试介绍</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <img class="logo logo-mark" src="xiaoxin2.jpg" alt="logo">
+    <nav class="nav">
+      <a class="active" href="index.html">关于我</a>
+      <a href="education.html">教育背景</a>
+      <a href="experience.html">实习经历</a>
+      <a href="skills.html">技能证书</a>
+      <a href="learning.html">学习与探索</a>
+    </nav>
+  </header>
+
+  <main id="top" class="page">
+    <section class="hero section">
+      <div class="hero-left">
+        <div class="hero-content">
+          <h1>Hi，我是宋佳丽</h1>
+          <p class="role-line">Data Analyst</p>
+          <p class="summary">
+            西安交通大学应用统计硕士，我把自己定位为“侦探型分析师”：
+            擅长从复杂业务线索中拆解问题、定位关键洞察，并把数据发现转化为可落地的增长策略。
+            我具备业务闭环能力与实验思维，希望用数据帮助团队判断“下一步做什么”。
+          </p>
+          <div class="actions">
+            <a href="resume-data-analyst.pdf" class="button primary" download>下载简历</a>
+            <button class="button secondary" type="button" id="openContact">联系我</button>
+          </div>
+        </div>
+
+        <div class="ai-matcher">
+          <div class="matcher-card">
+            <p class="matcher-title">AI 岗位匹配器</p>
+            <form id="matcherForm" class="matcher-form">
+              <input type="text" id="jobDescription" class="job-input" placeholder="粘贴您的JD，查看本人与岗位之间的匹配度">
+              <button type="submit" class="matcher-btn">开始匹配 →</button>
+            </form>
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+              <div class="spinner"></div>
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+                <span class="progress-text">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="个人照片与关键词">
+        <div class="photo-frame">
+          <img src="picture.jpg" alt="宋佳丽的个人照片">
+        </div>
+      </aside>
+    </section>
+
+    <!-- 匹配结果Modal -->
+    <div class="match-modal" id="matchModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-match></div>
+      <section class="match-popup" role="dialog" aria-modal="true">
+        <button class="modal-close" type="button" aria-label="关闭" data-close-match>×</button>
+        <div id="matchModalContent"></div>
+        <div class="modal-actions">
+          <button type="button" class="button primary" id="closeMatchModal">关闭</button>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <div class="contact-modal" id="contactModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-contact></div>
+    <section class="contact-popup" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+      <button class="modal-close" type="button" aria-label="关闭联系卡片" data-close-contact>×</button>
+      <div class="contact-sign">
+        <p class="section-label">Contact Me</p>
+        <h2 id="contactTitle">欢迎联系我</h2>
+        <p class="contact-line">电话：<a href="tel:17722286435">17722286435</a></p>
+        <p class="contact-line">邮箱：<a href="mailto:1910796430@qq.com">1910796430@qq.com</a></p>
+      </div>
+      <div class="contact-illustration" aria-hidden="true">
+        <img src="labixiaoxin.jpg" alt="联系插图">
+      </div>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
