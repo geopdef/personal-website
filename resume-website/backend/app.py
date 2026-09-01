@@ -184,6 +184,33 @@ HR会输入一份岗位的JD（职位描述），你需要基于候选人的数�
     return SYSTEM_PROMPT_CACHE
 
 
+def apply_weighted_overall_score(payload):
+    """用四维加权重算总分：学历15% + 经验30% + 技能30% + 软技能25%"""
+    try:
+        analysis = payload.get('analysis', payload)
+        scores = analysis.get('scores') or {}
+        education = float(scores['education']['score'])
+        experience = float(scores['experience']['score'])
+        skills = float(scores['skills']['score'])
+        soft_skills = float(scores['soft_skills']['score'])
+        overall = round(
+            education * 0.15
+            + experience * 0.30
+            + skills * 0.30
+            + soft_skills * 0.25
+        )
+        overall = max(0, min(100, int(overall)))
+        analysis['overall_score'] = overall
+        if 'analysis' in payload:
+            payload['analysis'] = analysis
+        else:
+            payload = analysis
+        return payload
+    except (KeyError, TypeError, ValueError) as e:
+        print(f"[WARN] 无法重算总分: {e}")
+        return payload
+
+
 def extract_resume_from_pdf():
     """从 PDF 中提取简历内容，支持每日缓存"""
     try:
@@ -395,6 +422,7 @@ def call_zhipu_api(system_prompt, job_description):
                     content = content.strip()
 
                 json_result = json.loads(content)
+                json_result = apply_weighted_overall_score(json_result)
                 print(f"[DEBUG] 成功解析 JSON")
                 return json.dumps(json_result, ensure_ascii=False, indent=2)
             except json.JSONDecodeError:

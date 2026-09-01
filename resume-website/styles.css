@@ -97,7 +97,11 @@ body {
 }
 
 .subpage {
-  padding-top: 54px;
+  padding-top: 8px;
+}
+
+.subpage > .section {
+  margin-top: 12px;
 }
 
 .section {
@@ -408,6 +412,20 @@ time {
   max-width: 920px;
 }
 
+.exp-summary > p {
+  margin: 0 0 8px;
+}
+
+.exp-summary-list {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.exp-summary-list li {
+  margin: 0 0 4px;
+  padding-left: 0.2em;
+}
+
 .exp-tag-rows {
   display: grid;
   gap: 10px;
@@ -512,6 +530,28 @@ time {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 55%),
     linear-gradient(160deg, #3b82f6, #1d4ed8);
+}
+
+.exp-project-cover.has-image {
+  height: 132px;
+  min-height: 132px;
+  padding: 0;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.exp-project-cover.has-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.exp-project-grid--3 .exp-project-cover.has-image {
+  height: 96px;
+  min-height: 96px;
+  padding: 0;
 }
 
 .exp-project-cover.tone-teal {
